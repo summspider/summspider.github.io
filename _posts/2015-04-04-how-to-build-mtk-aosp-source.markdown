@@ -184,7 +184,7 @@ PATH 通常可以在 shell 里面手动设定，举例如下：
 编译步骤如下：
 
 *   **cd bootable/bootloader/preloader** (此步骤仅仅是切到到你的 preloader 路径，如果 preloader 代码没有放置在 android source tree 里面的话需要切换到对应的位置)
-*   **TARGET_PRODUCT=sample\_project ./build.sh 2&gt;&amp;1 | tee build\_pl.log** (此步骤进行编译操作，对应 Project 的名字通过 TARGET\_PRODUCT 变量来指定)
+*   **TARGET\_PRODUCT=sample\_project ./build.sh 2&gt;&amp;1 | tee build\_pl.log** (此步骤进行编译操作，对应 Project 的名字通过 TARGET\_PRODUCT 变量来指定)
 
 注意，这种方式编译出来的 preloader bin 文件是在 preloader 的根目录，而不是 out/target/product/sample\_project 目录下，如果要下载的话请选择正确的 preloader\_sample\_project.bin 文件来下载。
 
@@ -203,7 +203,7 @@ PATH 通常可以在 shell 里面手动设定，举例如下：
 
 *   **cd kernel-3.10** (此步骤仅仅是切到到你的 kernel 代码路径，如果 kernel 代码没有放置在 android source tree 里面或者 kernel 版本不一样的话需要切换到对应的位置)
 *   **mkdir out ** (此步骤建立一个临时的路径，用于存放编译的中间文件以及结果)
-*   **make sample\_project\_debug\_defconfig** (此步骤用于选择要编译的 project 配置，通常以 _debug_defconfig 结尾的用于 eng 版本，仅以 _defconfig 结尾的用于 user 版本)
+*   **make sample\_project\_debug\_defconfig** (此步骤用于选择要编译的 project 配置，通常以 \_debug\_defconfig 结尾的用于 eng 版本，仅以 \_defconfig 结尾的用于 user 版本)
 *   **make -j32 2&gt;&amp;1 | tee build\_kernel.log** (此步骤是 kernel 的完整编译)
 
 注意，这种方式编译出来的 kernel 仅是压缩后的 image (有可能会添加了dtb在后面)，生成的 image 放在 out/arch/arm64/boot/ 或者 out/arch/arm/boot/ 目录下面，取决于编译的是 32bit 内核还是 64bit 内核。image 的名字为 Image.gz-dtb。
