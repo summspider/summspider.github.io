@@ -202,7 +202,7 @@ PATH 通常可以在 shell 里面手动设定，举例如下：
 编译步骤如下：
 
 *   **cd kernel-3.10** (此步骤仅仅是切到到你的 kernel 代码路径，如果 kernel 代码没有放置在 android source tree 里面或者 kernel 版本不一样的话需要切换到对应的位置)
-*   **mkdir out ** (此步骤建立一个临时的路径，用于存放编译的中间文件以及结果)
+*   **mkdir out** (此步骤建立一个临时的路径，用于存放编译的中间文件以及结果)
 *   **make sample\_project\_debug\_defconfig** (此步骤用于选择要编译的 project 配置，通常以 \_debug\_defconfig 结尾的用于 eng 版本，仅以 \_defconfig 结尾的用于 user 版本)
 *   **make -j32 2&gt;&amp;1 | tee build\_kernel.log** (此步骤是 kernel 的完整编译)
 
