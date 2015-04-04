@@ -12,15 +12,15 @@ summary: "MTK AOSP 版本的编译方法"
 
 虽然有改变，但是在 mtk release 的代码包里面依然包含了以前的 preloader/lk/kernel 的代码。所以和 AOSP 还是会有不同的地方。
 
-下面就以编译 sample_project (工程的名字) 的工程版本为例来讲一下如何编译代码。
+下面就以编译 sample\_project (工程的名字) 的工程版本为例来讲一下如何编译代码。
 
 ## 1. Full Build
 
 依次执行如下 command 序列：
 
 1.  source build/envsetup.sh
-2.  lunch full_sample_project-eng
-3.  make -j32 2&gt;&amp;1 | tee full_build.log
+2.  lunch full\_sample\_project-eng
+3.  make -j32 2&gt;&amp;1 | tee full\_build.log
 
 其中第一步主要是用来 setup 编译环境，第二步是加载工程的一些信息，第三步执行具体的编译。第三步里面可以用-j来指定编译时候的线程数量，2&gt;&amp;1 用来把标准错误重定向到标准输出。tee 指令用来复制标准输出到 log 文件。
 
@@ -29,7 +29,7 @@ summary: "MTK AOSP 版本的编译方法"
 在编译 module 之前首先要执行下面的两个命令（如果在当前shell执行过可以不用重复执行）
 
 1.  source build/envsetup.sh
-2.  lunch full_sample_project-eng
+2.  lunch full\_sample\_project-eng
 
 之后就可以用 module name 的编译方式，命令如下：
 
@@ -72,7 +72,7 @@ LK, 全称 Little Kernel, 是系统第二个 bootloader，源码位置在 bootab
 同样在编译前要先执行下面两条命令：
 
 1.  source build/envsetup.sh
-2.  lunch full_sample_project-eng
+2.  lunch full\_sample\_project-eng
 
 然后执行下面的mmm命令：
 
@@ -89,7 +89,7 @@ LK, 全称 Little Kernel, 是系统第二个 bootloader，源码位置在 bootab
 在打包前首先要执行下面两条命令：
 
 1.  source build/envsetup.sh
-2.  lunch full_sample_project-eng
+2.  lunch full\_sample\_project-eng
 
 ### 4.1 bootimage 打包
 
@@ -105,7 +105,7 @@ make bootimage 命令会检查依赖关系，在必要的情况下会先编译�
 
 #### 4.1.2 make bootimage-nodeps
 
-顾名思义，nodeps 的意思就是 no dependency check。这条命令不会做任何的依赖关系检查，仅仅是单纯的将 out/target/product/sample_project/ 下面的 kernel 镜像和 root 文件夹打包成 boot.img
+顾名思义，nodeps 的意思就是 no dependency check。这条命令不会做任何的依赖关系检查，仅仅是单纯的将 out/target/product/sample\_project/ 下面的 kernel 镜像和 root 文件夹打包成 boot.img
 
 *   make bootimage-nodeps
 
@@ -121,7 +121,7 @@ make systemimage 命令会检查 system image 里面所有目标文件的依赖�
 
 #### 4.2.2 make snod
 
-同样，make snod 是 system image with no dependency check的意思。所以 make snod 是不会检查依赖关系的。仅仅是将 out/target/product/sample_project/system 目录打包成 system.img 而已。
+同样，make snod 是 system image with no dependency check的意思。所以 make snod 是不会检查依赖关系的。仅仅是将 out/target/product/sample\_project/system 目录打包成 system.img 而已。
 
 *   make snod
 
@@ -131,13 +131,13 @@ Cache image 的打包命令也有两种，一种会检查依赖关系，一种�
 
 #### 4.3.1 make cacheimage
 
-make cacheimage 命令会检查 out/target/product/sample_project/cache 目录下所有目标文件的依赖关系，如果目标文件的依赖有更新，则会根据 Android.mk 里面的规则生成相应的目标，然后再打包 cache.img
+make cacheimage 命令会检查 out/target/product/sample\_project/cache 目录下所有目标文件的依赖关系，如果目标文件的依赖有更新，则会根据 Android.mk 里面的规则生成相应的目标，然后再打包 cache.img
 
 *   make cacheimage
 
 #### 4.3.2 make cacheimage-nodeps
 
-make cacheimage-nodeps 则仅仅是将 out/target/product/sample_project/cache 打包成cache.img，而不会做依赖关系的检查。
+make cacheimage-nodeps 则仅仅是将 out/target/product/sample\_project/cache 打包成cache.img，而不会做依赖关系的检查。
 
 *   make cacheimage-nodeps
 
@@ -147,13 +147,13 @@ userdata image 的打包命令也有两种，一种会检查依赖关系，一�
 
 #### 4.4.1 make userdataimage
 
-make userdataimage 命令会检查 out/target/product/sample_project/data 目录下的所有目标文件的依赖关系，如果目标文件的依赖有更新，则会根据 Android.mk 里面的规则生成相应的目标，然后再打包 userdata.img
+make userdataimage 命令会检查 out/target/product/sample\_project/data 目录下的所有目标文件的依赖关系，如果目标文件的依赖有更新，则会根据 Android.mk 里面的规则生成相应的目标，然后再打包 userdata.img
 
 *   make userdataimage
 
 #### 4.4.2 make userdataimage-nodeps
 
-make userdataimage-nodeps 则仅仅是将 out/target/product/sample_project/data 打包成 userdata.img，而不会做依赖关系的检查。
+make userdataimage-nodeps 则仅仅是将 out/target/product/sample\_project/data 打包成 userdata.img，而不会做依赖关系的检查。
 
 *   make userdataimage-nodeps
 
@@ -184,18 +184,18 @@ PATH 通常可以在 shell 里面手动设定，举例如下：
 编译步骤如下：
 
 *   **cd bootable/bootloader/preloader** (此步骤仅仅是切到到你的 preloader 路径，如果 preloader 代码没有放置在 android source tree 里面的话需要切换到对应的位置)
-*   **TARGET_PRODUCT=sample_project ./build.sh 2&gt;&amp;1 | tee build_pl.log** (此步骤进行编译操作，对应 Project 的名字通过 TARGET_PRODUCT 变量来指定)
+*   **TARGET_PRODUCT=sample\_project ./build.sh 2&gt;&amp;1 | tee build\_pl.log** (此步骤进行编译操作，对应 Project 的名字通过 TARGET\_PRODUCT 变量来指定)
 
-注意，这种方式编译出来的 preloader bin 文件是在 preloader 的根目录，而不是 out/target/product/sample_project 目录下，如果要下载的话请选择正确的 preloader_sample_project.bin 文件来下载。
+注意，这种方式编译出来的 preloader bin 文件是在 preloader 的根目录，而不是 out/target/product/sample\_project 目录下，如果要下载的话请选择正确的 preloader\_sample\_project.bin 文件来下载。
 
 ### 5.2 lk 独立编译
 
 编译步骤如下：
 
 *   **cd bootable/bootloader/lk** (此步骤仅仅是切到到你的 lk 路径，如果 lk 代码没有放置在 android source tree 里面的话需要切换到对应的位置)
-*   **make sample_project 2&gt;&amp;1 | tee build_lk.log** (此步骤进行编译操作，对应的 project 名字通过命令行传给 make 命令)
+*   **make sample\_project 2&gt;&amp;1 | tee build\_lk.log** (此步骤进行编译操作，对应的 project 名字通过命令行传给 make 命令)
 
-注意，这种方式编译出来的 lk bin 文件是在 lk 根目录下的 build-sample_project 目录下，而不是 out/target/product/sample_project 目录下，如果要下载的话请选择正确的 lk.bin 文件来下载。
+注意，这种方式编译出来的 lk bin 文件是在 lk 根目录下的 build-sample\_project 目录下，而不是 out/target/product/sample\_project 目录下，如果要下载的话请选择正确的 lk.bin 文件来下载。
 
 ### 5.3 kernel 独立编译
 
@@ -203,12 +203,12 @@ PATH 通常可以在 shell 里面手动设定，举例如下：
 
 *   **cd kernel-3.10** (此步骤仅仅是切到到你的 kernel 代码路径，如果 kernel 代码没有放置在 android source tree 里面或者 kernel 版本不一样的话需要切换到对应的位置)
 *   **mkdir out ** (此步骤建立一个临时的路径，用于存放编译的中间文件以及结果)
-*   **make sample_project_debug_defconfig** (此步骤用于选择要编译的 project 配置，通常以 _debug_defconfig 结尾的用于 eng 版本，仅以 _defconfig 结尾的用于 user 版本)
-*   **make -j32 2&gt;&amp;1 | tee build_kernel.log** (此步骤是 kernel 的完整编译)
+*   **make sample\_project\_debug\_defconfig** (此步骤用于选择要编译的 project 配置，通常以 _debug_defconfig 结尾的用于 eng 版本，仅以 _defconfig 结尾的用于 user 版本)
+*   **make -j32 2&gt;&amp;1 | tee build\_kernel.log** (此步骤是 kernel 的完整编译)
 
 注意，这种方式编译出来的 kernel 仅是压缩后的 image (有可能会添加了dtb在后面)，生成的 image 放在 out/arch/arm64/boot/ 或者 out/arch/arm/boot/ 目录下面，取决于编译的是 32bit 内核还是 64bit 内核。image 的名字为 Image.gz-dtb。
 
-由于生成 boot.img 的时候使用的是 out/target/product/sample_project/kernel 文件，所以在打包的时候还需要将编译好的 Image.gz-dtb copy 为 out/target/product/sample_project/kernel。(最新的平台都是支持这种方式的，老的平台像 mt6582 或者 mt6752/mt6732 则都需要添加一个 mtk 特有的 header，可以到 MTK 的 FAQ 网站上面找一下对应的方法。)
+由于生成 boot.img 的时候使用的是 out/target/product/sample\_project/kernel 文件，所以在打包的时候还需要将编译好的 Image.gz-dtb copy 为 out/target/product/sample\_project/kernel。(最新的平台都是支持这种方式的，老的平台像 mt6582 或者 mt6752/mt6732 则都需要添加一个 mtk 特有的 header，可以到 MTK 的 FAQ 网站上面找一下对应的方法。)
 
 ## 6 clean
 
